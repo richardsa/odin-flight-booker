@@ -1,0 +1,38 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Richie's Flight Booker</h1>
+<% if false %>
+<select name="from_airport_id">
+      <%= @airports.each do |airport| %>
+        <option value="<%= airport.id %>"><%= airport.code %></option>
+      <% end %>
+    </select>
+    
+    <select name="to_airport_id" > 
+      <%= @airports.each do |airport| %>
+        <option value="<%= airport.id %>"><%= airport.code %></option>
+      <% end %>
+    </select>
+     <%= select_tag(:airport_id, options_for_select(@airport_options)) %>
+    <% end %>
+    
+  <%= form_for(:flight, url: root_path, method: :get) do |f| %>
+    <%= label_tag(:f, "From:") %>
+    <%= f.select(:from_airport_id, @airport_options) %>
+    <%= label_tag(:f, "To:") %>
+    <%= f.select(:to_airport_id, @airport_options) %>
+    <%= label_tag(:f, "Number of Passengers:") %>
+    <%= f.select :field_that_stores_id, options_for_select({"1" => 1, "2" => 2, "3" => 3, "4" => 4}) %>
+    <%= label_tag(:f, "Date:") %>
+    <%= f.select(:start, @dates) %>
+   
+    
+    <br />
+     
+    <%= f.submit "Search for Flights", class: "btn btn-primary" %>
+  <% end %>
+    
+      
+</div>
+</div>
