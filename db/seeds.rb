@@ -14,7 +14,6 @@ Airport.create!(code:  "SFO")
 
 
 
-
 Airport.all.each do |airport1|
   Airport.all.each do |airport2|
     unless airport1 == airport2
