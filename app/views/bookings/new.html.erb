@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<% provide(:title, 'Booking') %>
+<h1 class="text-center">Booking Page</h1>
+
+<fieldset>
+  <legend>Trip Details</legend>
+  <h3>Flight #<%= @flight.id %></h3>
+  <h3>
+  <%= @flight.from_airport.code %> -> <%= @flight.to_airport.code %>
+  
+  </h3>
+  <p><%= @flight.start.strftime("%A, %B %d, %Y") %></p>
+  <p><%= @flight.start.strftime('%I:%M:%S %p') %></p>
+</fieldset>
+
+<div class="row">
+  <div class="large-6 columns">
+    <%= form_for(@booking) do |f| %>
+      <%= f.hidden_field :flight_id %> 
+             
+      <fieldset>
+        <legend>Passengers Information</legend>
+        <%= f.fields_for :passengers do |passenger| %>
+        <div class="row">
+          <div class="form-group">
+          <%= label_tag( "Name:") %>
+            <%= passenger.text_field :name %>
+          
+           <%= label_tag( "Email:") %>
+          <%= passenger.text_field :email %>
+         
+          </div>   
+        </div>    
+        <% end %>
+      </fieldset>
+      <%= f.submit "Book Flight", class: "button" %>
+    <% end %>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+

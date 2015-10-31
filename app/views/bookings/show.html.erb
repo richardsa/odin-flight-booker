@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<% provide(:title, 'Confirmation') %>
+<h1 class="text-center">Booking Confirmation</h1>
+
+<p>
+  Thank you for booking your flight with Richie's Flight Booker.<br />
+  Your confirmation # is <strong><%= @booking.id %></strong>.
+</p>
+
+<p>
+  Flight #<%= @booking.flight.id %>: <%= @booking.flight.from_airport.code %> -> 
+  <%= @booking.flight.to_airport.code %> on 
+  <%= @booking.flight.start.strftime("%A, %B %d, %Y") %>.
+</p>
+
+<p>Passengers:</p>
+<ol>
+<% @booking.passengers.each do |passenger| %>
+ <li> <%="#{passenger.name} <#{passenger.email}>" %></li>
+<% end %>
+</ol>
+</div>
+</div>

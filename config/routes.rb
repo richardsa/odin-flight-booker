@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  root 'flights#index'
   
+  get "flights" => 'flights#index'
+
+  resources :bookings, only: [:new, :create, :show]
+
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'flights#index'
+  
   
 
   # Example of regular route:
